@@ -5,4 +5,8 @@ const porta = servidor.porta
 //importar a rota index.js
 const index = require('./routes/index')(app)
 
+//importar o consgin e configurar
+const consgin = require('consign')
+consgin().include('./routes').into(app)
+
 app.listen(porta)

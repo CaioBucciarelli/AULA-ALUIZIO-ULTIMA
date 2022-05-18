@@ -9,4 +9,6 @@ const index = require('./routes/index')(app)
 const consgin = require('consign')
 consgin().include('./routes').into(app)
 
-app.listen(porta)
+app.listen(porta,()=>{
+    console.log("http://localhost"+porta)
+})

@@ -10,5 +10,5 @@ const consgin = require('consign')
 consgin().include('./routes').into(app)
 
 app.listen(porta,()=>{
-    console.log("http://localhost"+porta)
+    console.log("http://localhost:"+porta)
 })

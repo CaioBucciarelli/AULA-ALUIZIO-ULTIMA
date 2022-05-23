@@ -57,9 +57,12 @@
             </div>
         </div>
     </div>
-    <!-- <script>
+    <script>
         var verSenha = document.querySelector("#trocar")
         var senha = document.querySelector("#senha")
+
+        var verSenha2 = document.querySelector("#trocar2")
+        var senha2 = document.querySelector("#senha2")
 
         verSenha.addEventListener("click",()=>{
         var tipo = senha.getAttribute("type") === "password" ? "text" : "password"
@@ -67,15 +70,26 @@
         verSenha.classList.toggle("bi-eye-slash-fill")
         })
 
-        var verSenha2 = document.querySelector("#trocar2")
-        var senha2 = document.querySelector("#senha2")
 
         verSenha2.addEventListener("click",()=>{
         var tipo2 = senha2.getAttribute("type") === "password" ? "text" : "password"
         senha2.setAttribute("type",tipo2)
         verSenha2.classList.toggle("bi-eye-slash-fill")
         })
-    </script> -->
+
+
+
+function comparar(){
+  if (senha.value != senha2.value){
+    senha2.setCustomValidity('As senhas não coincidem')
+  }else{
+    senha2.setCustomValidity('')
+  }
+}
+
+senha.onchange = comparar
+senha2.onkeyup = comparar
+    </script> 
     <script src="js/comparar.js"></script>
 </body>
 

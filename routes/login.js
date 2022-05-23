@@ -5,7 +5,16 @@ module.exports = (app)=>{
     })
 
     //abrir a view atividades
-    app.post('/login',(req,res)=>{
-        res.render('atividades.ejs')
+    app.post('/login',async(req,res)=>{
+        //conectar com o banco de dados
+        const conexao = require('../config/database')()
+        //importar a model usuarios
+        const usuarios = require('../models/usuarios')
+        //procurar pelo endereço de email
+        var procurar = await usuarios.findOne({email:req.body.email})
+        if(!procurar){
+            res.send('Email não cadastrado!')
+        }
+        return res.render('atividades.ejs')
     })
 }

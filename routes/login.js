@@ -13,8 +13,15 @@ module.exports = (app)=>{
         //procurar pelo endereço de email
         var procurar = await usuarios.findOne({email:req.body.email})
         if(!procurar){
-            res.send('Email não cadastrado!')
+            return res.send('Email não cadastrado!')
         }
-        return res.render('atividades.ejs')
+        //comparar a senha digitada com a armazenada
+        const bcrypt = require('bcryptjs')
+        var comparar = await bcrypt.compare(req.body.senha,procurar.senha)
+        if(!comparar){
+            return res.send("Senha incorreta")
+        }   
+        //abrir a view atividades e enviar nome e id
+        res.render('atividades.ejs',{nome:procurar.nome,id:procurar._id})
     })
 }

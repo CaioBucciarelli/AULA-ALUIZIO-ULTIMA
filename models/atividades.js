@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
 
 //criar a estrutura para o armazenamento das informações do usuário
 const modelo = mongoose.Schema({
-    date:Date,
+    data:Date,
     tipo:String,
     entrega:String,
     disciplina:String,
     instrucoes:String,
-    usuarios:String
+    usuario:String
 })
 
 //gravar a estrutura na model usuários

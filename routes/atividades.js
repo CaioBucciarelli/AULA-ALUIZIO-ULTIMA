@@ -14,12 +14,12 @@ module.exports = (app)=>{
             tipo:dados.tipo,
             entrega:dados.entrega,
             instrucoes:dados.orientacao,
-            usuario:dados.id
+            usuarios:dados.id
         }).save()
 
-        //buscar todas as atividades desse usuário
-        var buscar = await atividades.find({usuario:dados.id})
-        // console.log(buscar)
+        //buscar os documentos na coleção atividades desse usuário
+        var buscar = await atividades.find({usuarios:dados.id})
+        console.log(buscar)
         res.render('atividades.ejs',{nome:dados.nome,id:dados.id,dados:buscar})
     })
 }
